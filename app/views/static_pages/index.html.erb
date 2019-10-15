@@ -1,0 +1,31 @@
+<section>
+
+  <header>
+    <h1>Best Hockey Dudes</h1>
+    <input class="new-player">
+  </header>
+  <section class="main">
+    <ul class="player-list">
+     
+
+    </ul>
+  </section>
+
+</section>
+
+
+<script>
+  $(function() {
+    $.get("/players").success( function( data ) {
+      let htmlString = "";
+
+      $.each(data, function(index, player) {
+        const playerName = '<li><label>' + player.name + '</label></li>';
+        htmlString += playerName
+      });
+      let ulPlayers = $('.player-list');
+      ulPlayers.html(htmlString);
+    });
+  }); 
+
+</script>
